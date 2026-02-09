@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Important en v15
-import { TranslatePipe } from './shared/pipes/translate.pipe';
-import { WordingService } from './core/services/wording.service';
+import { TranslatePipe, WordingService } from 'wording-lib';
 
 @Component({
   selector: 'app-root',

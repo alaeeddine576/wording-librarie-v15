@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform, inject } from '@angular/core';
-import { WordingService } from 'src/app/core/services/wording.service';
+import { WordingService } from './wording-lib.service';
 
 @Pipe({
     name: 'translate',

@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { WordingService } from './core/services/wording.service';
-import { TranslatePipe } from './shared/pipes/translate.pipe';
+import { WordingService, TranslatePipe } from 'wording-lib';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
