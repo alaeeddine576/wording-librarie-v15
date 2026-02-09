@@ -29,7 +29,7 @@ RUN sed -i \
 
 # 1. On copie l'application Angular (Le Site)
 # ⚠️ Vérifie bien que c'est le bon chemin dist/.../browser
-COPY --from=build-stage /app/dist/project-library /usr/local/apache2/htdocs/
+COPY --from=build-stage /app/dist/project-library-v15 /usr/local/apache2/htdocs/
 
 # 2. On copie les fichiers de config (Les Données)
 # On prend le contenu du dossier local "cloud-data/i18n" et on le met dans un dossier "i18n" sur le serveur
