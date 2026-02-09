@@ -33,7 +33,7 @@ COPY --from=build-stage /app/dist/project-library-v15 /usr/local/apache2/htdocs/
 
 # 2. On copie les fichiers de config (Les Données)
 # On prend le contenu du dossier local "cloud-data/i18n" et on le met dans un dossier "i18n" sur le serveur
-COPY cloud-data /usr/local/apache2/htdocs/i18n/
+COPY cloud-data /usr/local/apache2/htdocs/assets/i18n/
 
 # On expose le port 80
 EXPOSE 80

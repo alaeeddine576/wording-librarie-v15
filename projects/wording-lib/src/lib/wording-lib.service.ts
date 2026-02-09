@@ -14,7 +14,7 @@ export class WordingService {
 
   async initWording() {
     // Adapter l'URL selon où tu poses tes fichiers (ex: assets/i18n)
-    const baseUrl = '/i18n';
+    const baseUrl = '/assets/i18n';
 
     try {
       console.log('🔄 Init Wording (v15)...');
