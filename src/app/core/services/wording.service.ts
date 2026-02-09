@@ -14,7 +14,7 @@ export class WordingService {
 
     async initWording() {
         // Adapter l'URL selon où tu poses tes fichiers (ex: assets/i18n)
-        const baseUrl = 'http://localhost:8080/i18n';
+        const baseUrl = '/i18n';
 
         try {
             console.log('🔄 Init Wording (v15)...');
@@ -31,7 +31,7 @@ export class WordingService {
                 return;
             }
 
-            console.log('⬇️ Téléchargement');
+            console.log('⬇️ Téléchargement request config from:', `${baseUrl}/config.json`);
             await this.loadTranslationFromServer(config.version, baseUrl);
 
         } catch (error) {
@@ -42,13 +42,18 @@ export class WordingService {
     private async loadTranslationFromServer(version: string, baseUrl: string) {
         const lang = this.currentLang$.value;
         const url = `${baseUrl}/${lang}.v${version}.json`;
+        console.log('Trying to load translation from:', url);
 
-        const data = await firstValueFrom(this.http.get<any>(url));
+        try {
+            const data = await firstValueFrom(this.http.get<any>(url));
+            console.log('Translation data loaded:', data);
+            this.translations$.next(data); // Mise à jour des vues
 
-        this.translations$.next(data); // Mise à jour des vues
-
-        // Cache
-        localStorage.setItem(`wording_data_${lang}_v${version}`, JSON.stringify(data));
+            // Cache
+            localStorage.setItem(`wording_data_${lang}_v${version}`, JSON.stringify(data));
+        } catch (err) {
+            console.error('Error loading translation file:', err);
+        }
     }
 
     async switchLanguage(lang: string) {
