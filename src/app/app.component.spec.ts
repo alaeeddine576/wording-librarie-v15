@@ -1,16 +1,18 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { WordingService } from './core/services/wording.service';
+import { TranslatePipe } from './shared/pipes/translate.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        HttpClientTestingModule,
+        AppComponent,
+        TranslatePipe
       ],
-      declarations: [
-        AppComponent
-      ],
+      providers: [WordingService]
     }).compileComponents();
   });
 
@@ -20,16 +22,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'project-library-v15'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('project-library-v15');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('project-library-v15 app is running!');
-  });
+  // Removed obsolete tests that checked for non-existent properties (title) 
+  // and HTML elements (.content span) typical of default Angular templates but not present here.
 });
